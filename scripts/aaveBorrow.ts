@@ -26,6 +26,10 @@ async function main() {
     console.log("Deploing ...");
     await lendingPool.deposit(wethAddress, amount, deployer.address, 0);
     console.log("Deposited!");
+    const { totalDebtETH, availableBorrowsETH } = await getBorrowUserData(
+        lendingPool,
+        deployer
+    );
 }
 
 async function getBorrowUserData(
