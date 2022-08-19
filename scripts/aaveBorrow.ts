@@ -3,6 +3,7 @@ import getWeth from "./getWeth";
 import { networkConfig } from "../helper-hardhat-config";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { BigNumber } from "ethers";
+import { ILendingPool } from "../typechain-types";
 
 const chainId: number = network.config.chainId!;
 
@@ -25,6 +26,18 @@ async function main() {
     console.log("Deploing ...");
     await lendingPool.deposit(wethAddress, amount, deployer.address, 0);
     console.log("Deposited!");
+}
+
+async function getBorrowUserData(
+    ledingPool: ILendingPool,
+    account: SignerWithAddress
+) {
+    const { totalCollateralETH, totalDebtETH, availableBorrowsETH } =
+        await ledingPool.getUserAccountData(account.address);
+    console.log(`You have ${totalCollateralETH} worth of ETH deposited.`);
+    console.log(`You have ${totalDebtETH} worth of ETH borrowed.`);
+    console.log(`You can borrow ${availableBorrowsETH} worth of ETH.`);
+    return { totalDebtETH, availableBorrowsETH };
 }
 
 async function getLendingPool(account: SignerWithAddress) {
