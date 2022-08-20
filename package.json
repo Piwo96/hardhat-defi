@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@aave/protocol-v2": "^1.0.1",
+    "@chainlink/contracts": "^0.4.2",
     "dotenv": "^16.0.1",
     "hardhat-shorthand": "^1.0.0"
   }

@@ -8,7 +8,8 @@ interface networkConfigInfo {
 interface networkConfigItem {
     token: token;
     lendingPoolAddressesProviderAddress?: string;
-    erc20Address?: string;
+    daiTokenAddress?: string;
+    daiPriceFeedAddress?: string;
 }
 
 type token = {
@@ -26,6 +27,9 @@ export const networkConfig: networkConfigInfo = {
         },
         lendingPoolAddressesProviderAddress:
             "0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5",
-        erc20Address: "",
+        daiTokenAddress: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        daiPriceFeedAddress: "0x773616E4d11A78F511299002da57A0a94577F1f4",
     },
 };
+
+// uint96 _baseFee, uint96 _gasPriceLink
